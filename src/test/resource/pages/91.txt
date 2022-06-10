@@ -1,0 +1,983 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>
+<title>Корзина</title>
+<meta name="description" content="Продажа по доступным ценам. PlayBack.ru - Интернет-Магазин - Большой выбор смартфонов, планшетов, носимой электроники по низким ценам, отличный сервис, гарантии производителя">
+<meta name="keywords" content="купить, цена, описание, интернет-магазин, интернет, магазин, продажа, смартфоны">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Last-Modified" content="Mon, 08 Nov 2021 16:45:40 GMT">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/logo_apple.png">
+<link rel="StyleSheet" href="/include_new/styles.css" type="text/css" media="all">
+</head>
+
+<link rel="stylesheet" href="/include_new/jquery-ui.css" />
+<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />-->
+	<script src="https://code.jquery.com/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="/jscripts/jquery.easing.1.3.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+    <script type="text/javascript" src="/jscripts/menuscript.js"></script>
+	<script src="/jscripts/jquery.inputmask.js" type="text/javascript"></script>
+	<script src="/jscripts/jquery.inputmask.extensions.js" type="text/javascript"></script>
+	<script src="/jscripts/jquery.inputmask.numeric.extensions.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<script type="text/javascript" src="/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.js"></script>
+				<script type="text/javascript">
+				$(document).ready(function() {
+				$("a[rel=biggallery]").fancybox(
+				{
+				'opacity'		: 'true',
+				'overlayShow'	: 'false',
+				'transitionIn'	: 'elastic',
+             	'transitionOut'	: 'elastic',
+				'overlayShow'	: 'true',
+				'centerOnScroll'	: 'true',
+				}); 
+				$("a.examplefoto").fancybox(
+				{
+				'opacity'		: 'true',
+				'overlayShow'	: 'false',
+				'transitionIn'	: 'elastic',
+             	'transitionOut'	: 'elastic',
+				'overlayShow'	: 'true'
+				});
+			$("a.getaccinfo").fancybox({
+			    'opacity'				: true,
+				'width'				    : 1224,
+				'height'		    	: 700,
+				'maxHeight'				: 700,
+			    'fitToView'      		: 'false',
+				'autoScale'			    : 'false',
+				'type'				    : 'iframe',
+				'transitionIn'			: 'elastic',
+             	'transitionOut'			: 'elastic',
+				 onClosed : function(){ 
+					var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/include_new/get_basket_sost.php', false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+					var xx = document.getElementById('sosotoyaniekorziny');
+					xx.innerHTML=xmlhttp.responseText;
+					} }
+			});
+			$("a.getaccinfoss").fancybox({
+			    'opacity'				: true,
+				'width'				    : 1224,
+				'height'		    	: 700,
+				'maxHeight'				: 700,
+			    'fitToView'      		: 'false',
+				'autoScale'			    : 'false',
+				'type'				    : 'iframe',
+				'transitionIn'			: 'elastic',
+             	'transitionOut'			: 'elastic',
+				 onClosed : function(){ 
+							loadbasket(curexch);
+							getprodlisting();
+							loaddelivery();
+							getsumall();
+							
+					 }
+			});
+			$("a.getaccinfosse").fancybox({
+			    'opacity'				: true,
+				'width'				    : 1224,
+				'height'		    	: 700,
+				'maxHeight'				: 700,
+			    'fitToView'      		: 'false',
+				'autoScale'			    : 'false',
+				'type'				    : 'iframe',
+				'transitionIn'			: 'elastic',
+             	'transitionOut'			: 'elastic',
+				 onClosed : function(){ 
+							var xmlhttp = getXmlHttp();
+							xmlhttp.open('GET', '/include_new/get_basket_sost.php', false);
+							xmlhttp.send(null);
+							if(xmlhttp.status == 200) {
+							var xx = document.getElementById('sosotoyaniekorziny');
+							xx.innerHTML=xmlhttp.responseText;
+							}
+							loadprodactions();
+							
+					 }
+			});
+			$("a.getcallback").fancybox({
+				'type'				: 'iframe',
+				'width'				: 450,
+				'height'			: 250,
+				'maxHeight'			: 250,
+				'fitToView'      	: 'false',
+				'autoScale'			: 'false',
+				'openEffect'		: 'elastic',
+             	'closeEffect'		: 'elastic'
+			});
+			$("a.geaddrmag").fancybox({
+			'type'				: 'iframe',
+			'width'				: 650,
+			'height'			: 710,
+			'maxHeight'			: 900,
+			'fitToView'      	: 'false',
+			'autoScale'			: 'false',
+			'openEffect'		: 'elastic',
+			'closeEffect'		: 'elastic',
+			'titleShow'			: 'true',
+			titlePosition		: 'over'
+			});
+			$("a.getdelusl").fancybox({
+			'type'				: 'iframe',
+			'width'				: 900,
+			'height'			: 900,
+			'maxHeight'			: 900,
+			'fitToView'      	: 'false',
+			'autoScale'			: 'false',
+			'openEffect'		: 'elastic',
+			'closeEffect'		: 'elastic'
+			});
+				});
+				
+			// Определяем типы сообщений^
+var myMessages = ['success'];
+ 
+function hideAllMessages() {
+	var messagesHeights = new Array();
+
+	for(i = 0; i < myMessages.length; i++) {
+		messagesHeights[i] = $('.' + myMessages[i]).outerHeight();
+		$('.' + myMessages[i]).css('top', -messagesHeights[i]);
+	}
+}
+
+function showMessage(type) {
+	$('.' + type + '-trigger').click(function() {
+		hideAllMessages();
+		$('.' + type).animate({top:'0'}, 500);
+		
+	});
+}
+function hideMessage() {
+	$('.success').animate({top: -$('.success').outerHeight()}, 500);
+}
+function loadMessage(type) {
+	hideAllMessages();
+	$('.' + type).animate({top:'0'}, 500);
+	setTimeout("hideMessage()", 3000);
+}
+
+$(document).ready(function() {
+	hideAllMessages();
+ 
+	for(var i = 0; i < myMessages.length; i++) {
+		showMessage(myMessages[i]);
+	}
+
+	$('.message').click(function() {
+		$(this).animate({top: -$(this).outerHeight()}, 500);
+	});	 
+
+});       
+				
+				function getXmlHttp(){
+ 					 var xmlhttp;
+ 					 try {
+ 					   xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+  					} catch (e) {
+ 					   try {
+   					   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   					 } catch (E) {
+   					   xmlhttp = false;
+  					  }
+ 					 }
+  					if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+  					  xmlhttp = new XMLHttpRequest();
+  						}
+ 					 return xmlhttp;
+						}
+				function addtobasket(gettprodid,productcurname)
+				{
+					var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/basket_add.php?action=1&good_id='+gettprodid, false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+  					xmlhttp.abort();
+					}
+					xmlhttp.open('GET', '/include_new/get_basket_sost.php', false);
+					xmlhttp.send(null);
+					var xxm = document.getElementById('name_added_tov');
+					xxm.innerHTML=productcurname;
+					loadMessage('success');
+					if(xmlhttp.status == 200) {
+					var xx = document.getElementById('sosotoyaniekorziny');
+					xx.innerHTML=xmlhttp.responseText;
+					}
+					document.getElementById('buyimg'+gettprodid).innerHTML="В корзине";
+					document.getElementById('buyimg'+gettprodid).className="buyeditem";
+					document.getElementById('buyimg'+gettprodid).onclick=function(){	};
+					}
+					function addtobasketacc(gettprodid,productcurname)
+				{
+					var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/basket_add.php?action=1&good_id='+gettprodid, false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+  					xmlhttp.abort();
+					}
+					var xxm = document.getElementById('name_added_tov');
+					xxm.innerHTML=productcurname;
+					loadMessage('success');
+					document.getElementById('buyimg'+gettprodid).src="/img_new/buy_ok.png";
+					document.getElementById('buyimg'+gettprodid).onclick=function(){	};
+					}
+var bprodmass=new Array();
+var bprodlist = "";
+bprodmass=bprodlist.split(',');
+var exchange=1;
+var curexch=1;
+var rekvt=0;
+var addrt=1;
+var delivprice=390;
+var dost=1;
+function getprodlisting()
+{ 
+var xmlhttp = getXmlHttp();
+xmlhttp.open('GET', '/getdata/get_basket.php', false);
+xmlhttp.send(null);
+if(xmlhttp.status == 200) 
+	{
+		bprodlist=xmlhttp.responseText;
+		bprodmass=bprodlist.split(',');
+	} 
+}
+function getsumprod(prodid)
+{
+	var summa=0;
+	var i=0;
+	var curecena;
+	var curecenat;
+	var curcount;
+	var cursumm;
+	var prwithe=0;
+		curecenat=document.getElementById('pricec'+prodid);
+		curecena=document.getElementById('price'+prodid);
+		curcount=document.getElementById('quant'+prodid);
+		cursumm=document.getElementById('summ'+prodid);
+		cursummtext=document.getElementById('summs'+prodid);
+		prwithe=Math.ceil(eval(curecena.value)*eval(exchange));
+		curecenat.innerHTML=prwithe;
+		summa=Math.ceil(eval(prwithe)*eval(curcount.value));
+		mybasketset(prodid, curcount.value);
+		cursumm.value=summa;
+		cursummtext.innerHTML=summa;
+}
+function getsumall()
+{
+	loadactions();
+	$("a.getaccinfoss").fancybox({
+			    'opacity'				: true,
+				'width'				    : 1224,
+				'height'		    	: 700,
+				'maxHeight'				: 700,
+			    'fitToView'      		: 'false',
+				'autoScale'			    : 'false',
+				'type'				    : 'iframe',
+				'transitionIn'			: 'elastic',
+             	'transitionOut'			: 'elastic',
+				 onClosed : function(){ 
+							loadbasket(curexch);
+							getprodlisting();
+							loaddelivery();
+							getsumall();
+							
+					 }
+			});
+	var summa=0;
+	var i=0;
+	var curelem;
+	var curelemtext=document.getElementById('fullsummtext');;
+	var allsum=document.getElementById('fullsumm');
+	for (i = 0; i < bprodmass.length; i++) {
+		if(document.getElementById('tablerow'+bprodmass[i]).length != 0 &&document.getElementById('tablerow'+bprodmass[i]) != 'none')
+		{
+		getsumprod(bprodmass[i]);
+		curelem=document.getElementById('summ'+bprodmass[i]);
+		summa=summa+eval(curelem.value);
+		}
+}
+if(summa==0)
+{
+	location.reload();
+    return false;
+}
+var skidkaprice=document.getElementById('skidka');
+summa=eval(summa)-eval(skidkaprice.value);
+if(summa>150000)devfalse();
+else 
+{
+var delivra = document.getElementById('getfeliv');
+delivra.disabled=false;
+}
+loaddelivery();
+var delivprice=document.getElementById('delivsumm');
+summa=eval(summa)+eval(delivprice.value);
+allsum.value=summa;
+curelemtext.innerHTML=summa;
+}
+
+function getfullsum()
+{
+	loadbasket(1);
+	loadactions();
+	loaddelivery();
+	var summa=0;
+	var i=0;
+	var curelem;
+	var curelemtext=document.getElementById('fullsummtext');;
+	var allsum=document.getElementById('fullsumm');
+	for (i = 0; i < bprodmass.length; i++) {
+		if(document.getElementById('tablerow'+bprodmass[i]).length != 0 &&document.getElementById('tablerow'+bprodmass[i]) != 'none')
+		{
+		getsumprod(bprodmass[i]);
+		curelem=document.getElementById('summ'+bprodmass[i]);
+		summa=summa+eval(curelem.value);
+		}
+}
+var skidkaprice=document.getElementById('skidka');
+summa=eval(summa)-eval(skidkaprice.value);
+if(summa>50000)devfalse();
+else yesdostavka();
+var curdelivprice=document.getElementById('delivsumm');
+summa=eval(summa)+eval(curdelivprice.value);
+allsum.value=summa;
+curelemtext.innerHTML=summa;
+}
+function mybasketset(prodid, quan)
+{
+	var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/basket_add.php?action=5&good_id='+prodid+'&quantity='+quan, false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+  					xmlhttp.abort();
+					}
+}
+function mybasketdel(prodid)
+{
+	var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/basket_add.php?action=2&good_id='+prodid, false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+  					xmlhttp.abort();
+					}
+	var curcount=document.getElementById('quant'+prodid);
+	curcount.value=0;
+	var prodtr=document.getElementById('tablerow'+prodid);
+	prodtr.style.display='none';
+	getsumall();
+}
+function loadbasket(exch)
+{
+	var curbasket=document.getElementById('productlist');
+	var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/getdata/get_product_list.php?ex='+exch, false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+					curbasket.innerHTML=xmlhttp.responseText;
+					}
+}
+function loadactions()
+{
+	var curact=document.getElementById('actionspan');
+	var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/getdata/get_action.php', false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+					curact.innerHTML=xmlhttp.responseText;
+					}
+}
+function loadprodactions(curproduct)
+{
+	var curact=document.getElementById('actionprodspan');
+	var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/getdata/get_action_product.php?getproductid='+curproduct, false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+					curact.innerHTML=xmlhttp.responseText;
+					}
+					$("a.getaccinfosse").fancybox({
+			    'opacity'				: true,
+				'width'				    : 1224,
+				'height'		    	: 700,
+				'maxHeight'				: 700,
+			    'fitToView'      		: 'false',
+				'autoScale'			    : 'false',
+				'type'				    : 'iframe',
+				'transitionIn'			: 'elastic',
+             	'transitionOut'			: 'elastic',
+				 onClosed : function(){ 
+							var xmlhttp = getXmlHttp();
+							xmlhttp.open('GET', '/include_new/get_basket_sost.php', false);
+							xmlhttp.send(null);
+							if(xmlhttp.status == 200) {
+							var xx = document.getElementById('sosotoyaniekorziny');
+							xx.innerHTML=xmlhttp.responseText;
+							}
+							loadprodactions();
+					 }
+			});
+}
+function loaddelivery()
+{
+	var delivstatus=document.getElementById('getfeliv');
+	var regiontype=document.getElementById('regoine');
+	var setundev=0;
+	if(delivstatus.checked && regiontype.value!=1)
+	setundev=1;
+	if(!delivstatus.checked)
+	setundev=2;
+	var curbasket=document.getElementById('deliveryspan');
+	var xmlhttp = getXmlHttp();
+					xmlhttp.open('GET', '/getdata/get_delivery.php?deltype='+setundev, false);
+					xmlhttp.send(null);
+					if(xmlhttp.status == 200) {
+					curbasket.innerHTML=xmlhttp.responseText;
+					}
+}
+function nodostavka()
+{
+	document.getElementById('deliveryaddress').style.display='none';
+	document.getElementById('delivtr').style.display='none';
+	var regiontype=document.getElementById('regoine');
+	var delivsb = document.getElementById('sboplata');
+	if(eval(regiontype.value)==1)  {document.getElementById('beznalopldiv').style.visibility='visible';}
+	if(eval(regiontype.value)==1 && rekvt==1 && delivsb.checked==false)
+	{
+		document.getElementById('rekvtext').style.display='';
+	    document.getElementById('rekvt').style.display='';
+	}
+	addrt=0;
+	getsumall();
+}
+function devfalse()
+{
+	document.getElementById('deliveryaddress').style.display='none';
+	document.getElementById('delivtr').style.display='none';
+	var regiontype=document.getElementById('regoine');
+	var delivsb = document.getElementById('sboplata');
+	if(eval(regiontype.value)==1 && rekvt==1  && delivsb.checked==false)
+	{
+		document.getElementById('rekvtext').style.display='';
+	    document.getElementById('rekvt').style.display='';
+	}
+	addrt=0;
+	var delivrez = document.getElementById('getsamovyvoz');
+	delivrez.checked=true;
+	var delivra = document.getElementById('getfeliv');
+	delivra.disabled=true;
+}
+function yesdostavka()
+{	
+
+	var regiontype=document.getElementById('regoine');
+	var deliv = document.getElementById('delivsumm');
+	document.getElementById('beznalopldiv').style.visibility='hidden';
+	if(eval(regiontype.value)==1)
+		document.getElementById('naloplata').checked=true;
+	getnal();
+	if(eval(regiontype.value)==1)
+	{
+		deliv.innerHTML=delivprice;
+		var deliv2 = document.getElementById('naloplata');
+	    deliv2.disabled=false;
+	}
+	else
+	{
+		deliv.innerHTML='обговаривается';
+	}
+	addrt=1;
+	document.getElementById('deliveryaddress').style.display='';
+	document.getElementById('delivtr').style.display='';
+	getsumall();
+}
+function plusposition(prodid)
+{
+	var currentcounts = document.getElementById('quant'+prodid);
+	var currentcount = currentcounts.value;
+	currentcounts.value = eval(currentcount)+1;
+	getsumall();
+}
+function minusposition(prodid)
+{
+	var currentcounts = document.getElementById('quant'+prodid);
+	var currentcount = currentcounts.value;
+	if(eval(currentcount)==1)
+	{
+		mybasketdel(prodid);
+	}
+	else
+	{
+		currentcounts.value = eval(currentcount)-1;
+	}
+	getsumall();
+}
+function otherdostavka()
+{
+	var deliv = document.getElementById('delivsumm');
+	deliv.innerHTML='обговаривается';
+	///var deliv = document.getElementById('beznaloplata');
+	var deliv = document.getElementById('sboplata');
+	deliv.checked=true;
+	var deliv2 = document.getElementById('naloplata');
+	deliv2.disabled=true;
+	/// при запуске закоментить exchange
+	//exchange=1.06;
+	addrt=1;
+	//rekvt=1;
+	getsumall();
+}
+function selectdosttype()
+{
+	var regiontype=document.getElementById('regoine');
+	var dostavkakur=document.getElementById('getfeliv');
+	if(eval(regiontype.value)==1)
+	{
+		if(dostavkakur.checked)
+			{
+				yesdostavka();
+			}
+		else
+			{
+				nodostavka();
+			}
+			var nalsiv = document.getElementById('nalopldiv');
+			nalsiv.style.visibility='visible';
+			var deliv2 = document.getElementById('naloplata');
+			deliv2.disabled=false;
+			deliv2.checked=true;
+			var sbdivshka = document.getElementById('sbsivopl');
+			sbdivshka.style.visibility='hidden';
+			var sbshka = document.getElementById('sboplata');
+			sbshka.disabled=true;
+	}
+	else
+	{
+		document.getElementById('beznalopldiv').style.visibility='hidden';
+		if(dostavkakur.checked)
+			{
+				document.getElementById('rekvtext').style.display='none';
+	            document.getElementById('rekvt').style.display='none';
+				otherdostavka();
+			}
+		else
+			{
+				//document.getElementById('rekvtext').style.display='';
+	            //document.getElementById('rekvt').style.display='';
+				////var deliv = document.getElementById('beznaloplata');
+				var deliv = document.getElementById('sboplata');
+				deliv.checked=true;
+				var deliv2 = document.getElementById('naloplata');
+				deliv2.disabled=true;
+				/// при запуске закоментить exchange
+				//exchange=1.06;
+				addrt=1;
+				nodostavka();
+			}
+			var nalsiv = document.getElementById('nalopldiv');
+			nalsiv.style.visibility='hidden';
+			var sbdivshka = document.getElementById('sbsivopl');
+			sbdivshka.style.visibility='visible';
+			var sbshka = document.getElementById('sboplata');
+			sbshka.disabled=false;
+			getnal();
+		
+	}
+}
+function getnal()
+{
+	document.getElementById('rekvtext').style.display='none';
+	document.getElementById('rekvt').style.display='none';
+	curexch=1;
+	loadbasket(curexch);
+	getsumall();
+	rekvt=0;
+}
+
+function getbeznal()
+{
+	//document.getElementById('rekvtext').style.display='';
+	//document.getElementById('rekvt').style.display='';
+	curexch=1.04;
+	loadbasket(curexch);
+	getsumall();
+	rekvt=1;
+}
+function isValidEmailAddress(emailAddress) {
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        return pattern.test(emailAddress);
+    }
+function isEmpty(str) {
+   for (var i = 0; i < str.length; i++)
+      if (" " != str.charAt(i))
+          return false;
+      return true;
+}
+function setdeliv490price() {
+   var allsum=document.getElementById('fullsumm');
+   var sumzak = allsum.value;
+   if(sumzak>=50000)
+   delivprice=0;
+   else
+   delivprice=490;
+   getsumall();
+}
+function bsformsubmit()
+{
+	var errorinp=0;
+	var fiot=document.getElementById('fiotext');
+	if(isEmpty(fiot.value))
+	{
+		fiot.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		fiot.style.borderColor="#1ca7cc";
+	}
+	var emait=document.getElementById('emailtext');
+	if(!isValidEmailAddress(emait.value))
+	{
+		emait.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		emait.style.borderColor="#1ca7cc";
+	}
+	var phot=document.getElementById('phonetext');
+	if(isEmpty(phot.value))
+	{
+		phot.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		phot.style.borderColor="#1ca7cc";
+	}
+	/*if(rekvt==1)
+	{
+		var rekt=document.getElementById('rekvtext');
+		if(isEmpty(rekt.value))
+		{
+			rekt.style.borderColor="#FF0000";
+			errorinp=1;
+		}
+		else
+		{
+			rekt.style.borderColor="#1ca7cc";
+		}
+	}*/
+	if(addrt==1)
+	{
+		var addt=document.getElementById('addresstext');
+		if(isEmpty(addt.value))
+		{
+			addt.style.borderColor="#FF0000";
+			errorinp=1;
+		}
+		else
+		{
+			addt.style.borderColor="#1ca7cc";
+		}
+	}
+	var errortr=document.getElementById('requiredmess');
+	if(errorinp==0)
+	{
+		
+		errortr.style.display='none';
+		document.getElementById('basketform').submit();
+	}
+	else
+	{
+		errortr.style.display='';
+	}
+}
+function parntweformsubmit()
+{
+	var errorinp=0;
+	var fiot=document.getElementById('fio');
+	if(isEmpty(fiot.value))
+	{
+		fiot.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		fiot.style.borderColor="#1ca7cc";
+	}
+	var emailt=document.getElementById('email');
+	if(isEmpty(emailt.value))
+	{
+		emailt.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		emailt.style.borderColor="#1ca7cc";
+	}
+	
+	var phonet=document.getElementById('phone');
+	if(isEmpty(phonet.value))
+	{
+		phonet.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		phonet.style.borderColor="#1ca7cc";
+	}
+	
+		var icqt=document.getElementById('icq');
+	if(isEmpty(icqt.value))
+	{
+		icqt.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		icqt.style.borderColor="#1ca7cc";
+	}
+	
+		var compnamet=document.getElementById('compname');
+	if(isEmpty(compnamet.value))
+	{
+		compnamet.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		compnamet.style.borderColor="#1ca7cc";
+	}
+	
+	
+		var websitet=document.getElementById('website');
+	if(isEmpty(websitet.value))
+	{
+		websitet.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		websitet.style.borderColor="#1ca7cc";
+	}
+	
+		var placet=document.getElementById('place');
+	if(isEmpty(placet.value))
+	{
+		placet.style.borderColor="#FF0000";
+		errorinp=1;
+	}
+	else
+	{
+		placet.style.borderColor="#1ca7cc";
+	}
+	
+	
+	
+	var errortr=document.getElementById('requiredmess');
+	if(errorinp==0)
+	{
+		
+		errortr.style.display='none';
+		document.getElementById('partnerform').submit();
+	}
+	else
+	{
+		errortr.style.display='';
+	}
+}
+</script>
+<body class="body_undertop" topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0" align="center">
+<div class="success message"  style="top:-150px;">
+  <h3>Сообщение</h3>
+  <p>Товар <span id="name_added_tov"></span> успешно добавлен в корзину.</p>
+</div>
+<table  class="table1" style="box-shadow:0px 0px 32px #595959; margin:5px auto; border-raduis: 5px;" bgcolor="#ffffff"  width="1024" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+   <td colspan="3" width="1024">
+  <table width="100%" border="0" height="110px" cellpadding="0" cellspacing="0" style="margin-top: 0px; margin-bottom: 0px;">
+  <tr>
+    <td width="365px" rowspan="2" align="left">
+		<table width="250px" align=left><tr><td width="60px" height="60px"><img onClick="document.location='http://www.playback.ru';return false" src="/img_new/lolo.png" class="logotip" alt="Playback.ru - смартфоны, носимая электроника и аксессуары к ним" title="Playback.ru - смартфоны, носимая электроника и аксессуары к ним"> </td><td valign="center" align="left"><a class="tele_span" href="/"><span class="tele_span_playback">PlayBack.ru</span></a><br><span style="cursor: pointer;" onClick="document.location='/waytoplayback.html';return false" class="getcallback2">5 минут от метро ВДНХ</span></td></tr>
+		</table>
+	</td>
+	<td width="3px" rowspan="2" align="center">&nbsp;
+    </td>
+    <td width="290px" rowspan="2">
+		<table width="215px" align=center><tr><td valign="center" align="center"><span class="tele_span"><nobr><a href="tel:+74951437771">8(495)143-77-71</a></nobr></span><span class="grrafik"><nobr><br>пн-пт: c 11 до 20<br>сб-вс: с 11 до 18</nobr></span></td></tr>
+		</table>
+    </td>
+    <td width="3px"  align="center" rowspan="2">&nbsp;
+    </td>
+    <td width="185px">
+		<table width="175px" align=center><tr><td valign="center" align="center"><span class="blocknamezpom" style="cursor: pointer;" onClick="document.location='/tell_about_the_problem.html';return false" >Возникла проблема?<br>Напишите нам!</span></td></tr>
+		</table>
+    <span class="tele_span"></span>
+   
+    </td>
+    <td width="3px" align="center">&nbsp;
+    </td>
+	<td width="179px">
+	<table  width="175px" align=center><tr><td width="53px" height="50px" rowspan="2" align="left"><a href="/basket.html"><img src="/img_new/basket.png" width="49px" border=0></a></td><td valign="bottom" align="left" height="25px"><a class="tele_span2" href="/basket.html">Корзина</a><br><span class="take_me_call"></span></td></tr>
+	<tr>
+	            <td height="10px" align="right" valign="top"><span class="basket_inc_label" id="sosotoyaniekorziny">пуста</span></td>
+	</tr></table>
+	</td>
+	</tr>
+	<tr>
+    <td colspan="3" style="text-align: right;">
+	<form action="/search.php" method="get" class="izkat">
+  <input type="search" name="search_string" placeholder="поиск" class="ssstring"/>
+  <input type="submit" name="" value="Искать" class="iskat"/>
+</form></td>
+   </tr>
+	</table>
+	</td>
+  </tr>
+ </tr>
+	<!---<tr> 
+	<td colspan="3" style="color: #2556A3; font:17px Roboto-Regular,Helvetica,sans-serif; text-align: center; height: 35px;vertical-align: middle;padding-bottom:10px;">
+		<b>Уважаемые покупатели! 31 декабря наш магазин работает с 11 до 16, 1 января - выходной, далее - по стандартному графику.</b>
+	</td>
+  </tr>--->
+  
+  <tr>
+    <td colspan="3">
+	
+	
+	
+	
+	<nav>
+  <ul class="topmenu">
+    <li><a href="" class="active" onclick="return false;"><img src="/img/imglist.png" height="9px"> Каталог<span class="fa fa-angle-down"></span></a>
+      <ul class="submenu">
+<li><a href="/catalog/1534.html">Экшн-камеры</a></li><li><a href="/catalog/1511.html">Смартфоны</a></li><li><a href="/catalog/1300.html">Чехлы для смартфонов Xiaomi</a></li><li><a href="/catalog/1302.html">Защитные стекла для смартфонов Xiaomi</a></li><li><a href="/catalog/1310.html">Чехлы для Huawei/Honor</a></li><li><a href="/catalog/1308.html">Чехлы для смартфонов Samsung</a></li><li><a href="/catalog/1307.html">Защитные стекла для смартфонов Samsung</a></li><li><a href="/catalog/1141.html">Планшеты</a></li><li><a href="/catalog/1315.html">Зарядные устройства и кабели</a></li><li><a href="/catalog/1329.html">Держатели для смартфонов</a></li><li><a href="/catalog/665.html">Автодержатели</a></li><li><a href="/catalog/1304.html">Носимая электроника</a></li><li><a href="/catalog/1305.html">Наушники и колонки</a></li><li><a href="/catalog/1314.html">Гаджеты Xiaomi</a></li><li><a href="/catalog/805.html">Запчасти для телефонов</a></li><li><a href="/catalog/1311.html">Чехлы для планшетов</a></li><li><a href="/catalog/1317.html">Аксессуары для фото-видео</a></li><li><a href="/catalog/1318.html">Чехлы для смартфонов Apple</a></li><li><a href="/catalog/1412.html">Товары для автомобилистов</a></li><li><a href="/catalog/1429.html">USB Флеш-накопители</a></li><li><a href="/catalog/1473.html">Товары для детей</a></li><li><a href="/catalog/1485.html">Чехлы для смартфонов Doogee</a></li><li><a href="/catalog/1507.html">Защитные стекла для смартфонов Realme</a></li><li><a href="/catalog/1508.html">Чехлы для смартфонов Realme</a></li><li><a href="/catalog/18.html">Карты памяти</a></li><li><a href="/catalog/1303.html">Защитные стекла для планшетов</a></li><li><a href="/catalog/1312.html">Защитные стекла для смартфонов</a></li>      </ul>
+    </li>
+    <li><a href="/dostavka.html">Доставка</a></li>
+    <li><a href="/pickup.html">Самовывоз</a></li>
+    <li><a href="/payment.html">Оплата</a></li>
+    <li><a href="/warranty.html">Гарантия и обмен</a></li>
+    <li><a href="/contacts.html">Контакты</a></li>
+  </ul>
+</nav>
+	
+	
+	
+  
+  
+	</td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="top">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="0">
+	<tr>    <td colspan="3" class="item_full_cell" align="left">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td colspan="2" style="text-align:left; padding-left:2px;">
+        <a class="button15" href="/">&#9668 На главную страницу</a></td>
+		<div width="100%" height="1px" style="display:block;"></div>
+    </tr>
+    
+      <tr>
+        <td colspan="2">
+          </td
+              ></tr>
+            <tr>
+              <td class="text_cell">
+			  <div style="width:100%; text-align:center;"><img src="/img/noshop.png"><br /><span style="font-family: Raleway, Helvetica, sans-serif;font-size: 24px;font-weight: bold;color: #104D93;text-decoration: none;">Ваша корзина пуста.</span><br/><a style="font-family: Raleway, Helvetica, sans-serif;font-size: 22px;font-weight: bold;color: #000;text-decoration: underline;" href="/">Начать покупки</a></div><br/><br/><br/><br/><br/>
+
+
+
+		  </td>
+  </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+<div class="footer">
+<div class="footer_block">
+<span class="footer_h1">Информация</span>
+<br>
+<a href="/">Наши спецпредложения</a>
+<br>
+<a href="/dostavka.html">Доставка</a>
+<br>
+<a href="/payment.html">Оплата</a>
+<br>
+<a href="/warranty.html">Гарантия</a>
+<br>
+<a href="/contacts.html">Контакты</a>
+<br>
+<a href="/privacy_policy.html">Положение о конфиденциальности и защите персональных данных</a>
+</div>
+<div class="footer_block_cont">
+<span class="footer_tel">+7(495)143-77-71</span>
+<br><br>
+<a class="footer_email" href="http://vk.com/playback_ru"  target="_blank"><img src="/img/VK.png" title="Наша страница Вконтакте"></a>
+&nbsp;&nbsp;
+<br><br>
+
+</div>
+<div class="footer_block_cont" style="width:260px;">
+<span class="footer_h1">График работы:</span>
+<br>
+пн-пт: c 11-00 до 20-00
+<br>
+сб-вс: с 11-00 до 18-00
+<br><br>
+<span class="footer_h1">Наш адрес:</span>
+<br>
+Москва, Звездный бульвар, 10,
+<br>
+строение 1, 2 этаж, офис 10.
+</div>
+<div class="footer_block">
+
+</div>
+
+<div class="footer_block">
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?105"></script>
+<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 0, width: "260", height: "210", color1: 'FFFFFF', color2: '0C5696', color3: '0064BA'}, 48023501);
+</script>
+</div>
+</div>
+<div style="width: 1024px; font-family: Roboto-Regular,Helvetica,sans-serif; text-align: right; font-size: 12px; text-align: left; padding-left: 10px; color: #595959; background: url(/img/footer-fon.png) repeat;">
+2005-2022 &copy;Интернет магазин PlayBack.ru
+</div>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(232370, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/232370" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<!-- BEGIN JIVOSITE CODE {literal} -->
+<script type='text/javascript'>
+(function(){ var widget_id = '8LKJc6dMce';var d=document;var w=window;function l(){
+  var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+  s.src = '//code.jivosite.com/script/widget/'+widget_id
+    ; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}
+  if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}
+  else{w.addEventListener('load',l,false);}}})();
+</script>
+<!-- {/literal} END JIVOSITE CODE -->
+</td>
+  </tr>
+</table>
+<a href="#" class="scrollup">Наверх</a>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="07.04.2022-init" author="Nikolay Malygin">
+        <createTable tableName="_lemma">
+            <column name="id"                       type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="site_id"                  type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_user_id"              type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="word"                     type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="frequency"                type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="_index">
+            <column name="id"                       type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="site_id"                  type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_user_id"              type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rank"                     type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="page_path"                 type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="word"                      type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="_stat">
+            <column name="id"                       type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="site_id"                  type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_user_id"              type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time"               type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_time"                 type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parsed_pages"              type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="saved_lemmas"              type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_indexes"           type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex tableName="_lemma" indexName="_lemma_word_index">
+            <column name="word"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
